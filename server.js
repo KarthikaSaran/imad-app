@@ -9,8 +9,8 @@ var article_one={
     title:"Article-One",
     date:"2nd August,2017",
     heading:"Numbers",
-    place:"Bangalore"
-    content: `  <ol>
+    place:"Bangalore",
+    content: ` <ol>
                     <li> One </li>
                     <li> Two </li>
                     <li> Three </li>
