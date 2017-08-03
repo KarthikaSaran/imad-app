@@ -5,23 +5,50 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-var articleone={
-    title:"Article-One",
-    date:"2nd August,2017",
-    heading:"Numbers",
-    place:"Bangalore",
-    content: ` <ol>
-                    <li> One </li>
-                    <li> Two </li>
-                    <li> Three </li>
-                    <li> Four </li>
-                    <li> Five </li>
-                    <li> Six </li>
-                    <li> Seven </li>
-                    <li> Eight </li>
-                    <li> Nine </li>
-                    <li> Ten </li>
-                </ol>`
+var articles={
+    articleone:{
+        title:"Article-One By Karthika",
+        date:"2nd August,2017",
+        heading:"Numbers",
+        place:"Bangalore",
+        content: ` <ol>
+                        <li> One </li>
+                        <li> Two </li>
+                        <li> Three </li>
+                        <li> Four </li>
+                        <li> Five </li>
+                        <li> Six </li>
+                        <li> Seven </li>
+                        <li> Eight </li>
+                        <li> Nine </li>
+                        <li> Ten </li>
+                    </ol>`
+},
+    articletwo:{
+        title:"Article-Two By Karthika",
+        date:"3nd August,2017",
+        heading:"India",
+        place:"Bangalore",
+        content: ` <p> India is my country. It is rich in wealth , natural resources and human resources. It's ancient tradition is noteworthy. </p>
+            <ul>
+                <li> National Flower : Lotus</li>
+                <li> National Animal : Tiger</li>
+                <li> National Bird : Peacock</li>
+                <li> National Anthem : Jana Gana Mana</li>
+                <li> National Flag : Tricoloured with chakra in between</li>
+            </ul>`
+    },
+    articlethree:{
+        title:"Article-Three By Karthika",
+        date:"4th August,2017",
+        heading:"Computer",
+        place:"Bangalore",
+        content: ` <p>What is a computer? </p>
+            <p> A computer is an electronic device which takes an input, processes it and renders the output.</p>
+            <p> The computer is very fast and it replaces the boring and tiring mundane tasks</p>
+            <p> Computers made our lives much easier</p>`
+    }
+    
 };
 function createTemplate(data)
 {
@@ -68,11 +95,11 @@ app.get("/article-one",function (req,res){
     
 });
 app.get("/article-two",function (req,res){
-    res.sendFile(path.join(__dirname, 'ui', 'article-two.html'));
+   res.send(createTemplate(articletwo));
     
 });
 app.get("/article-three",function (req,res){
-    res.sendFile(path.join(__dirname, 'ui', 'article-three.html'));
+    res.send(createTemplate(articlethree));
     
 });
 app.get('/ui/style.css', function (req, res) {
