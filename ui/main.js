@@ -1,2 +1,2 @@
-var element=docuemnt.getElementById("textq");
+var element=document.getElementById("textq");
 element.innerHTML="Hi";
