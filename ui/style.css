@@ -27,10 +27,10 @@ body {
 }
 
 .container{
-    max-width:200px;
+    max-width:800px;
     padding-top:60px;
     padding-left:20px;
     padding-right:20px;
     margin:0 auto;
-    color:turquoise;
+    color:red;
 }
