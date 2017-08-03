@@ -31,7 +31,7 @@ function createTemplate(data)
     var heading=data.heading;
     var htmlTemplate=
        
-        `<html>
+        <html>
             <head>
                 <title>
                     $(title)
@@ -55,7 +55,7 @@ function createTemplate(data)
                     </div>
                 </div>
             </body>
-        </html>`;
+        </html>;
     return htmlTemplate;
 }
 
