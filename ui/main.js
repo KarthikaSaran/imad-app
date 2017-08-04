@@ -1,5 +1,6 @@
 var button1=document.getElementById("counter");
 var counter=0;
+alert(button1);
 button1.onClick=function(){
     var span=document.getElementById("count");
     counter=counter+1;
