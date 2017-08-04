@@ -11,5 +11,5 @@ button1.onclick=function(){
            } 
         }
     };
- rrequest.send(null);   
+ request.send(null);   
 };
