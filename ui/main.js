@@ -1,12 +1,7 @@
-var element=document.getElementById("textq");
-element.innerHTML="Hi";
-var img=document.getElementById("img1");
-console.log(img.style.marginLeft);
-var marginLeft=0;
-function moveRight(){
-    marginLeft=marginLeft+10;
-    img.style.marginLeft=marginLeft+"px";
-}
-img.onClick=function(){
-    var interval=setInterval(moveRight(),50);
+var button=document.getElementById("counter");
+var count=0;
+button.onClick=function(){
+    var span=document.getElementById("count");
+    count=count+1;
+    span.innerHTML=count.toString;
 };
