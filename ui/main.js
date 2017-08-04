@@ -7,7 +7,7 @@ button1.onclick=function(){
            if(request.status===200){
                alert(request.responseText);
                var counter=request.responseText;
-               alert(counter);
+               console.log(counter);
                counter=counter+1;
                span.innerHTML=counter.toString();
            } 
