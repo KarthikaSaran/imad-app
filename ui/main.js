@@ -3,8 +3,8 @@ var button1=document.getElementById("counter");
 button1.onclick=function(){
     var request=new XMLHttpRequest();
     request.onReadyStateChange=function() {
-        if(request.readyState==XMLHttpRequest.DONE) {
-           if(request.status==200){
+        if(request.readyState===XMLHttpRequest.DONE) {
+           if(request.status===200){
                alert(request.responseText);
                var counter=request.responseText;
                counter=counter+1;
