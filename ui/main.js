@@ -11,6 +11,6 @@ button1.onclick=function(){
            } 
         }
     };
-request.open(GET,'http://karthikaraghavendrar7.imad.hasura-app.io/counter')
- request.send(null);   
+request.open(GET,'http://karthikaraghavendrar7.imad.hasura-app.io/counter');
+request.send(null);   
 };
