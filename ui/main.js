@@ -17,13 +17,25 @@ request.open('GET','http://karthikaraghavendrar7.imad.hasura-app.io/counter',tru
 request.send(null);   
 };
 
-var name1=document.getElementById("name").value;
+
 
 var button2=document.getElementById("submit");
 button2.onclick=function(){
-    var names=['Smrithi','Srijanani'];
-    var list='';
-    for(var i=0;i<names.length;i++)
-        list+='<li>'+names[i]+'</li>';
-   document.getElementById("namelist").innerHTML=list; 
-}
+    var name1=document.getElementById("name").value;
+    var request=new XMLHttpRequest();
+    request.onreadystatechange=function() {
+        if(request.readyState===XMLHttpRequest.DONE) {
+           if(request.status===200){
+              
+                var names=request.responseText;
+                names=JSON.parse(names);
+                var list='';
+                for(var i=0;i<names.length;i++)
+                    list+='<li>'+names[i]+'</li>';
+           }
+        }
+    document.getElementById("namelist").innerHTML=list; 
+    };
+    request.open('GET','http://karthikaraghavendrar7.imad.hasura-app.io/submitname/?name='+name1,true);
+    request.send(null);    
+};
