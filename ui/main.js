@@ -1,7 +1,15 @@
 var button1=document.getElementById("counter");
-var counter=0;
+
 button1.onclick=function(){
-    var span=document.getElementById("count");
-    counter=counter+1;
-    span.innerHTML=counter.toString();
+    var request=new XMLHttpRequest();
+    request.onReadyStateChanged=function() {
+        if(request.readyState==XMLHttpRequest.DONE) {
+           if(request.status==200){
+               var counter=request.responseText;
+               counter=counter+1;
+               span.innerHTML=counter.toString();
+           } 
+        }
+    };
+ rrequest.send(null);   
 };
