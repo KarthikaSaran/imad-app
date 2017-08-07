@@ -2,6 +2,7 @@ var button3=document.getElementById("comment");
 button3.onclick=function(){
 	var comm=document.getElementById("comm").value;
 	document.getElementById("comm").value='';
+	console.log(comm);
 	var request=new XMLHttpRequest();
     var articleName=this.document.title.split(" ")[0];
     console.log(articleName);
