@@ -138,8 +138,8 @@ app.get('/submitname/', function (req, res) {
  res.send(JSON.stringify(names));
 });
 
-app.get('/submitcomment/?comment=comm/?article=articleName',function(req,res){
-    articleName=req.query.article();
+app.get('/:articleName/submitcomment/?comment=comm',function(req,res){
+    
     var comm=req.query.comment;
     comments[articleName].push(comm);
     res.send(JSON.stringify(comments));
