@@ -104,6 +104,15 @@ app.get('/submitname/', function (req, res) {
  res.send(JSON.stringify(names));
 });
 
+var comments=[];
+app.get('/submitcomment/',function(req,res){
+
+    var comm=req.query.comment;
+    comments.push(comm);
+    res.send(JSON.stringify(comments));
+});
+
+
 
 app.get("/:articleName",function (req,res){
    var articleName=req.params.articleName;
