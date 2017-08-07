@@ -4,20 +4,10 @@ var path = require('path');
 
 var app = express();
 app.use(morgan('combined'));
-var a1c=[];
-var a2c=[];
-var a3c=[];
-var comments={
-    'article-one':{
-        a1c
-    },
-    'article-two':{
-        a2c
-    },
-    'article-three':{
-        a3c
-    }
-};
+var article-onec=[];
+var article-twoc=[];
+var article-threec=[];
+
 var articles={
     'article-one':{
         title:"Article-One By Karthika",
@@ -149,9 +139,10 @@ app.get("/:articleName",function (req,res){
 
 app.get("/:articleName/submitcomment/",function(req,res){
    var articleName=req.params.articleName;
+   articleName=articleName+'c';
     var comm=req.query.comment;
-   //comments[articleName].push(comm);
-   res.send(JSON.stringify(comm));
+    articleName.push(comm);
+   res.send(JSON.stringify(articleName));
     
     //res.send(JSON.stringify(comments));
 });
