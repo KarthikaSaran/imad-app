@@ -22,7 +22,8 @@ var articles={
                         <li> Eight </li>
                         <li> Nine </li>
                         <li> Ten </li>
-                    </ol>`
+                    </ol>`,
+        comments:getComment('article-three')
 },
     'article-two':{
         title:"Article-Two By Karthika",
@@ -36,7 +37,8 @@ var articles={
                 <li> National Bird : Peacock</li>
                 <li> National Anthem : Jana Gana Mana</li>
                 <li> National Flag : Tricoloured with chakra in between</li>
-            </ul>`
+            </ul>`,
+        comments:getComment('article-two')
     },
     'article-three':{
         title:"Article-Three By Karthika",
