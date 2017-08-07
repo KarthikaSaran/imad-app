@@ -16,10 +16,11 @@ button3.onclick=function(){
                 document.getElementById("comm_list").innerHTML=list; 
            }
         }
-	request.open('GET','http://karthikaraghavendrar7.imad.hasura-app.io/'+articleName+'/submitcomment/?comment='+comm,true);
-    request.send(null); 
-
+	
 
 	
 };
+request.open('GET','http://karthikaraghavendrar7.imad.hasura-app.io/'+articleName+'/submitcomment/?comment='+comm,true);
+request.send(null); 
+
 };
