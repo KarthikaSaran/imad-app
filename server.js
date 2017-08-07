@@ -136,7 +136,7 @@ app.get('/submitname/', function (req, res) {
  res.send(JSON.stringify(names));
 });
 
-app.get('/submitcomment/?article=articleName',function(req,res){
+app.get('/submitcomment/?comment=comm/?article=articleName',function(req,res){
     articleName=req.query.article();
     var comm=req.query.comment;
     comments[articleName].push(comm);
