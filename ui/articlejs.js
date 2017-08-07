@@ -11,8 +11,8 @@ button3.onclick=function(){
                 var comments=request.responseText;
                 comments=JSON.parse(comments);
                 var list='';
-                for(var i=0;i<names.length;i++)
-                    list+='<li>'+names[i]+'</li>';
+                for(var i=0;i<comments.length;i++)
+                    list+='<li>'+comments[i]+'</li>';
                 document.getElementById("comm_list").innerHTML=list; 
            }
         }
