@@ -22,6 +22,7 @@ request.send(null);
 var button2=document.getElementById("submit");
 button2.onclick=function(){
     var name1=document.getElementById("name").value;
+    document.getElementById("name").value='';
     var request=new XMLHttpRequest();
     request.onreadystatechange=function() {
         if(request.readyState===XMLHttpRequest.DONE) {
@@ -42,6 +43,7 @@ button2.onclick=function(){
 
 var button3=document.getElementById("comment").onclick=function(){
 	var comm=document.getElementById("comm").value;
+	document.getElementById("comm").value='';
 	var request=new XMLHttpRequest();
 	request.onreadystatechange=function(){
 		if(request.readyState==XMLHttpRequest.DONE) {
