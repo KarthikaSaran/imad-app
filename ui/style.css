@@ -28,11 +28,12 @@ p {
 
 .container{
     max-width:800px;
-    padding-top:60px;
+    
     padding-left:20px;
     padding-right:20px;
     margin:0 auto;
     color:grey;
+    height:200%;
 }
 div{
    background-color:white; 
