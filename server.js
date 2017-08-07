@@ -4,7 +4,20 @@ var path = require('path');
 
 var app = express();
 app.use(morgan('combined'));
-
+var a1c=[];
+var a2c=[];
+var a3c=[];
+var comments={
+    'article-one':{
+        a1c
+    },
+    'article-two':{
+        a2c
+    },
+    'article-three':{
+        a3c
+    }
+};
 var articles={
     'article-one':{
         title:"Article-One By Karthika",
@@ -23,7 +36,7 @@ var articles={
                         <li> Nine </li>
                         <li> Ten </li>
                     </ol>`,
-        comments:getComment('article-three')
+        comments:comments['article-three']
 },
     'article-two':{
         title:"Article-Two By Karthika",
@@ -55,20 +68,7 @@ var articles={
     }
     
 };
-var a1c=[];
-var a2c=[];
-var a3c=[];
-var comments={
-    'article-one':{
-        a1c
-    },
-    'article-two':{
-        a2c
-    },
-    'article-three':{
-        a3c
-    }
-};
+
 function getComment(articleName)
 {
     return(comments[articleName]);
