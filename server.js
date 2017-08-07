@@ -36,7 +36,7 @@ var articles={
                         <li> Nine </li>
                         <li> Ten </li>
                     </ol>`,
-        comments:comments['article-three']
+        comments:comments['article-one']
 },
     'article-two':{
         title:"Article-Two By Karthika",
@@ -51,7 +51,7 @@ var articles={
                 <li> National Anthem : Jana Gana Mana</li>
                 <li> National Flag : Tricoloured with chakra in between</li>
             </ul>`,
-        comments:getComment('article-two')
+        comments:comments['article-two']
     },
     'article-three':{
         title:"Article-Three By Karthika",
@@ -62,17 +62,14 @@ var articles={
             <p> A computer is an electronic device which takes an input, processes it and renders the output.</p>
             <p> The computer is very fast and it replaces the boring and tiring mundane tasks</p>
             <p> Computers made our lives much easier</p>`,
-        comments:getComment('article-three')
+        comments:comments['article-three']
         
         
     }
     
 };
 
-function getComment(articleName)
-{
-    return(comments[articleName]);
-}
+
 function createTemplate(data)
 {
     var title=data.title;
