@@ -58,6 +58,6 @@ var button3=document.getElementById("comment").onclick=function(){
 		}
 	document.getElementById("comm_list").innerHTML=list;
 	};
-	request.open('GET','http://karthikaraghavendrar7.imad.hasura-app.io/'+this.document.title.split(" ")[0]+'submitcomment/?comment='+comm+'/?article='+this.document,true);
+	request.open('GET','http://karthikaraghavendrar7.imad.hasura-app.io/'+this.document.title.split(" ")[0]+'submitcomment/?comment='+comm+'/?article='+this.document.title.split(" ")[0],true);
     request.send(null); 
 };
