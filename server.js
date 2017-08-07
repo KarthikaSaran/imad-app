@@ -147,12 +147,11 @@ app.get("/:articleName",function (req,res){
     
 });
 
-app.get('/:articleName/submitcomment/',function(req,res){
-    
+app.get("/:articleName/submitcomment/",function(req,res){
+   var articleName=req.params.articleName;
    var comm=req.query.comment;
-   //comments[articleName].push(comm);
-   //console.log(comments);
-   res.send(JSON.stringify(comments[articleName]));
+   comments[articleName].push(comm);
+   res.send(JSON.stringify(comments));
     
     //res.send(JSON.stringify(comments));
 });
