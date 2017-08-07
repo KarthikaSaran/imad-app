@@ -136,13 +136,12 @@ app.get("/:articleName",function (req,res){
    res.send(createTemplate(articles[articleName]));
     
 });
-
+var comments=[];
 app.get("/:articleName/submitcomment/",function(req,res){
    var articleName=req.params.articleName;
-   articleName=articleName+'c';
     var comm=req.query.comment;
-    articleName.push(comm);
-   res.send(JSON.stringify(articleName));
+    comments.push(comm);
+   res.send(JSON.stringify(comments));
     
     //res.send(JSON.stringify(comments));
 });
