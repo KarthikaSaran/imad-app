@@ -116,6 +116,8 @@ function createTemplate(data)
         				<button id="comment"> Post </button>
     			    </div>
                 </div>
+                <script type="text/javascript" src="/ui/main.js">
+                </script>
             </body>
         </html>`;
     return htmlTemplate;
