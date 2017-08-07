@@ -48,6 +48,7 @@ button3.onclick=function(){
 	document.getElementById("comm").value='';
 	var request=new XMLHttpRequest();
     var articleName=this.document.title.split(" ")[0];
+    console.log(articleName);
     articleName[0]='a';
 	request.open('GET','http://karthikaraghavendrar7.imad.hasura-app.io/'+articleName+'/submitcomment/?comment='+comm,true);
     request.send(null); 
