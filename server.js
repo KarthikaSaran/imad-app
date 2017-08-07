@@ -150,8 +150,10 @@ app.get("/:articleName",function (req,res){
 app.get('/:articleName/submitcomment/',function(req,res){
     
    var comm=req.query.comment;
-    comments[articleName].push(comm);
-    res.send(JSON.stringify(comments));
+   console.log(comm);
+   res.send(JSON.stringify("ABC"));
+    //comments[articleName].push(comm);
+    //res.send(JSON.stringify(comments));
 });
 
 app.get('/ui/style.css', function (req, res) {
