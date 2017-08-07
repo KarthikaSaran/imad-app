@@ -4,6 +4,8 @@ button3.onclick=function(){
 	document.getElementById("comm").value='';
 	var request=new XMLHttpRequest();
     var articleName=document.title.split(" ")[0].toLowerCase();
+    request.open('GET','http://karthikaraghavendrar7.imad.hasura-app.io/'+articleName+'/submitcomment/?comment='+comm,true);
+    request.send(null); 
     request.onreadystatechange=function() {
         if(request.readyState===XMLHttpRequest.DONE) {
            if(request.status===200){
@@ -21,7 +23,6 @@ button3.onclick=function(){
 
 	
 };
-request.open('GET','http://karthikaraghavendrar7.imad.hasura-app.io/'+articleName+'/submitcomment/?comment='+comm,true);
-request.send(null); 
+
 
 };
