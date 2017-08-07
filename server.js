@@ -46,10 +46,31 @@ var articles={
         content: ` <p>What is a computer? </p>
             <p> A computer is an electronic device which takes an input, processes it and renders the output.</p>
             <p> The computer is very fast and it replaces the boring and tiring mundane tasks</p>
-            <p> Computers made our lives much easier</p>`
+            <p> Computers made our lives much easier</p>`,
+        comments:getComment('article-three')
+        
+        
     }
     
 };
+var a1c=[];
+var a2c=[];
+var a3c=[];
+var comments={
+    'article-one':{
+        a1c
+    },
+    'article-two':{
+        a2c
+    },
+    'article-three':{
+        a3c
+    }
+};
+function getComment(articleName)
+{
+    return(comments[articleName]);
+}
 function createTemplate(data)
 {
     var title=data.title;
@@ -57,6 +78,7 @@ function createTemplate(data)
     var date=data.date;
     var heading=data.heading;
     var content=data.content;
+    var comments=data.comments; 
     var htmlTemplate=
        
         `<html>
@@ -81,6 +103,16 @@ function createTemplate(data)
                         <h3> ${heading} </h3>
                         ${content}
                     </div>
+                    <div>
+        				<h4> Comments </h4> <hr>
+        				<ul id="comm_list">
+        				    ${comments}
+        				</ul>
+    			    </div>
+    			    <div>
+        				<input type="text" id="comm" placeholder="Type your comments here"/>
+        				<button id="comment"> Post </button>
+    			    </div>
                 </div>
             </body>
         </html>`;
@@ -104,11 +136,10 @@ app.get('/submitname/', function (req, res) {
  res.send(JSON.stringify(names));
 });
 
-var comments=[];
-app.get('/submitcomment/',function(req,res){
-
+app.get('/submitcomment/?article=articleName',function(req,res){
+    articleName=req.query.article();
     var comm=req.query.comment;
-    comments.push(comm);
+    comments[articleName].push(comm);
     res.send(JSON.stringify(comments));
 });
 
