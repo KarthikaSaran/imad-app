@@ -123,10 +123,10 @@ app.get('/', function (req, res) {
 });
 var pool=new Pool(config);
 app.get('/test-db',function(req,res) {
-   res.send(pool);
-    pool.query('SELECT * FROM article',function(err,result){
-       if(err) req.status(500).send(err.toString());
-       else req.send(JSON.stringify(result));
+   
+    pool.query('SELECT * FROM article', function (err,result){
+       if(err) res.status(500).send(err.toString());
+       else res.send(JSON.stringify(result));
     });
 });
 
