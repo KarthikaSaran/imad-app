@@ -1,7 +1,7 @@
 var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
-var pool=require('pg').Pool;
+var Pool=require('pg').Pool;
 
 var app = express();
 app.use(morgan('combined'));
@@ -13,13 +13,7 @@ var config={
     port: "5432",
     password:process.env.DB_PASSWORD
 };
-var pool=new Pool(config);
-app.get("/test-db",function(req,res) {
-    pool.query('SELECT * FROM article',function(err,result){
-       if(err) req.status(500).send(err.toString());
-       else req.send(JSON.stringify(result));
-    });
-});
+
 
 
 var articles={
@@ -142,7 +136,13 @@ app.get('/submitname/', function (req, res) {
 });
 
 
-
+var pool=new Pool(config);
+app.get("/test-db",function(req,res) {
+    pool.query('SELECT * FROM article',function(err,result){
+       if(err) req.status(500).send(err.toString());
+       else req.send(JSON.stringify(result));
+    });
+});
 
 app.get("/:articleName",function (req,res){
    var articleName=req.params.articleName;
