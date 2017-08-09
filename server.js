@@ -7,10 +7,10 @@ var app = express();
 app.use(morgan('combined'));
 
 var config={
-    user:"karthikaraghavendrar7",
-    database:"karthikaraghavendrar7",
-    host:"db.imad.hasura-app.io",
-    port: "5432",
+    user:'karthikaraghavendrar7',
+    database:'karthikaraghavendrar7',
+    host:'db.imad.hasura-app.io',
+    port: '5432',
     password:process.env.DB_PASSWORD
 };
 
