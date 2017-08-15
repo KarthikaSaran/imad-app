@@ -45,7 +45,7 @@ button2.onclick=function(){
 var button3=document.getElementById("login");
 button3.onclick=function(){
     var username=document.getElementById("username").value;
-    document.getElementById("name").value='';
+    document.getElementById("username").value='';
     var password=document.getElementById("password").value;
     console.log(username,password);
     var request=new XMLHttpRequest();
