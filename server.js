@@ -3,9 +3,10 @@ var morgan = require('morgan');
 var path = require('path');
 var Pool=require('pg').Pool;
 var crypto=require('crypto');
-
+var bodyParser=require('body-parser');
 var app = express();
 app.use(morgan('combined'));
+app.use(bodyParser.json());
 
 var config={
     user:'karthikaraghavendrar7',
@@ -186,6 +187,16 @@ app.get("/hash/:input",function(req,res){
    res.send(output);
 });
 
+
+app.post("/create-user",function(req,res){
+   var username=req.body.username;
+   var password=req.body.password;
+   pool.query('INSERT INTO "user"(username,password) VALUES ($1, $2)',[username,password],function(err,response){
+      if(err) res.status(500).send(err.toString());
+      else if(result.rows.length===0) res.status(404).send("Not found");
+      else res.send("User successfully created for"+username); 
+   });
+});
 
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
