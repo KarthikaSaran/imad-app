@@ -175,18 +175,22 @@ app.post("/create-user",function(req,res){
 });
 
 
-/*app.post("/login",function(req,res){
+app.post("/login",function(req,res){
    var username=req.body.username;
    var password=req.body.password;
    
    pool.query('SELECT * FROM "user" where username= $1',[username],function(err,result){
       if(err) res.status(500).send(err.toString());
-      else if(result.rows.length===0) res.status(404).send("Not found");
+      else if(result.rows[0].length===0) res.status(404).send("Not found");
       else{
+          storedPassword=result.rows[0].password;
+          hpassword=hash(password,storedPassword.split('$')[2]);
+          if(storedPassword===hpassword) res.send("Login Successful");
+          else res.send("Login Failed");
           
       }
    });
-});*/
+});
 
 
 /*app.get("/:articleName",function (req,res){
