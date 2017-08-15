@@ -153,7 +153,7 @@ app.get('/submitname/', function (req, res) {
 
 function hash(input,salt){
     var output=crypto.pbkdf2Sync(input,salt , 100000, 512, 'sha512');
-    return output.toString('hex');
+    return ['pbkdf2Sync','10000',salt,output.toString('hex')].join('$');
 }
 
 app.get("/hash/:input",function(req,res){
@@ -173,6 +173,21 @@ app.post("/create-user",function(req,res){
       else res.send("User successfully created for"+username); 
    });
 });
+
+
+/*app.post("/login",function(req,res){
+   var username=req.body.username;
+   var password=req.body.password;
+   
+   pool.query('SELECT * FROM "user" where username= $1',[username],function(err,result){
+      if(err) res.status(500).send(err.toString());
+      else if(result.rows.length===0) res.status(404).send("Not found");
+      else{
+          
+      }
+   });
+});*/
+
 
 /*app.get("/:articleName",function (req,res){
    var articleName=req.params.articleName;
