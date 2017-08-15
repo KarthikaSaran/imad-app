@@ -72,7 +72,7 @@ var articles={
 app.get("/create-user",function(req,res){
    var username=req.body.username;
    var password=req.body.password;
-   var salt=crypto.getRandomString(128).toString('hex');
+   var salt=crypto.getRandomBytes(128).toString('hex');
    var hpassword=hash(password,salt);
    pool.query('INSERT INTO "user"(username,password) VALUES ($1, $2)',[username,hpassword],function(err,response){
       if(err) res.status(500).send(err.toString());
