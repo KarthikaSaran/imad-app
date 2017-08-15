@@ -18,7 +18,7 @@ var config={
 
 
 
-var articles={
+/*var articles={
     'article-one':{
         title:"Article-One By Karthika",
         date:"2nd August,2017",
@@ -67,33 +67,12 @@ var articles={
         
     }
     
-};
+};*/
 
 
-function hash(input,salt){
-    var output=crypto.pbkdf2Sync(input,salt , 100000, 512, 'sha512');
-    return output.toString('hex');
-}
 
-app.get("/hash/:input",function(req,res){
-    var salt='randomized-value-for-salt';
-   var input=req.params.input;
-   var output=hash(input,salt);
-   res.send(output);
-});
 
-app.post("/create-user",function(req,res){
-   var username=req.body.username;
-   var password=req.body.password;
-   var salt=crypto.randomBytes(128).toString('hex');
-   var hpassword=hash(password,salt);
-   pool.query('INSERT INTO "user"(username,password) VALUES ($1, $2)',[username,hpassword],function(err,response){
-      if(err) res.status(500).send(err.toString());
-      else res.send("User successfully created for"+username); 
-   });
-});
-
-function createTemplate(data)
+/*function createTemplate(data)
 {
     var title=data.title;
     var place=data.place;
@@ -141,7 +120,7 @@ function createTemplate(data)
             </body>
         </html>`;
     return htmlTemplate;
-}
+}*/
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
@@ -172,9 +151,30 @@ app.get('/submitname/', function (req, res) {
  res.send(JSON.stringify(names));
 });
 
+function hash(input,salt){
+    var output=crypto.pbkdf2Sync(input,salt , 100000, 512, 'sha512');
+    return output.toString('hex');
+}
 
+app.get("/hash/:input",function(req,res){
+    var salt='randomized-value-for-salt';
+   var input=req.params.input;
+   var output=hash(input,salt);
+   res.send(output);
+});
 
-app.get("/:articleName",function (req,res){
+app.post("/create-user",function(req,res){
+   var username=req.body.username;
+   var password=req.body.password;
+   var salt=crypto.randomBytes(128).toString('hex');
+   var hpassword=hash(password,salt);
+   pool.query('INSERT INTO "user"(username,password) VALUES ($1, $2)',[username,hpassword],function(err,response){
+      if(err) res.status(500).send(err.toString());
+      else res.send("User successfully created for"+username); 
+   });
+});
+
+/*app.get("/:articleName",function (req,res){
    var articleName=req.params.articleName;
    res.send(createTemplate(articles[articleName]));
     
@@ -198,7 +198,7 @@ app.get("/:articleName/submitcomment/",function(req,res){
    res.send(JSON.stringify(comments));
     
     //res.send(JSON.stringify(comments));
-});
+});*/
 
 
 
