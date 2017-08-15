@@ -2,6 +2,7 @@ var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
 var Pool=require('pg').Pool;
+var crypto=require('crypto');
 
 var app = express();
 app.use(morgan('combined'));
@@ -172,6 +173,19 @@ app.get("/:articleName/submitcomment/",function(req,res){
     
     //res.send(JSON.stringify(comments));
 });
+
+
+function hash(input){
+    var output=crypto.pbkdf2Sync(input, 'randomized-value-for-salt', 100000, 512, 'sha512');
+    return output.toString('hex');
+}
+
+app.get("/hash/:input",function(req,res){
+   var input=req.params.input;
+   var output=hash(input);
+   res.send(output);
+});
+
 
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
