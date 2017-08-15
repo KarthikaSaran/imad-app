@@ -57,7 +57,7 @@ button3.onclick=function(){
     
     };
     request.open('POST','http://karthikaraghavendrar7.imad.hasura-app.io/submitname/login',true);
-    request.setRequestHeader('Content-type:application/json');
+    request.setRequestHeader('Content-type','application/json');
     request.send(JSON.stringify({username:username,password:password}));    
 };
 
