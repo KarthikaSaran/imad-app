@@ -42,3 +42,22 @@ button2.onclick=function(){
     request.send(null);    
 };
 
+var button3=document.getElementById("login");
+button3.onclick=function(){
+    var username=document.getElementById("username").value;
+    document.getElementById("name").value='';
+    var password=document.getElementById("password").value;
+    var request=new XMLHttpRequest();
+    request.onreadystatechange=function() {
+        if(request.readyState===XMLHttpRequest.DONE) {
+           if(request.status===200) alert("Login Successful");
+           else if(request.status===403) alert("Login Failed");
+           else if(request.status===500) alert("Something went wrong");
+        }
+    
+    };
+    request.open('POST','http://karthikaraghavendrar7.imad.hasura-app.io/submitname/login',true);
+    request.setRequestHeader('Content-type:application/json');
+    request.send(JSON.stringify({username:username,password:password}));    
+};
+
