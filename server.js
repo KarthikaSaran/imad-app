@@ -186,7 +186,7 @@ app.post("/login",function(req,res){
           storedPassword=result.rows[0].password;
           hpassword=hash(password,storedPassword.split('$')[2]);
           if(storedPassword===hpassword) res.send("Login Successful");
-          else res.send("Login Failed");
+          else res.status(403).send("Login Failed");
           
       }
    });
