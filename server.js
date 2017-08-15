@@ -133,6 +133,17 @@ app.get('/test-db',function(req,res) {
 });
 
 
+app.post("/create-user",function(req,res){
+   var username=req.body.username;
+   var password=req.body.password;
+   pool.query('INSERT INTO "user"(username,password) VALUES ($1, $2)',[username,password],function(err,response){
+      if(err) res.status(500).send(err.toString());
+      else if(result.rows.length===0) res.status(404).send("Not found");
+      else res.send("User successfully created for"+username); 
+   });
+});
+
+
 var counter=0;
 app.get('/counter', function (req, res) {
   counter=counter+1;
@@ -188,15 +199,6 @@ app.get("/hash/:input",function(req,res){
 });
 
 
-app.post("/create-user",function(req,res){
-   var username=req.body.username;
-   var password=req.body.password;
-   pool.query('INSERT INTO "user"(username,password) VALUES ($1, $2)',[username,password],function(err,response){
-      if(err) res.status(500).send(err.toString());
-      else if(result.rows.length===0) res.status(404).send("Not found");
-      else res.send("User successfully created for"+username); 
-   });
-});
 
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
