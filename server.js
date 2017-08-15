@@ -69,6 +69,19 @@ var articles={
     
 };
 
+
+function hash(input,salt){
+    var output=crypto.pbkdf2Sync(input,salt , 100000, 512, 'sha512');
+    return output.toString('hex');
+}
+
+app.get("/hash/:input",function(req,res){
+    var salt='randomized-value-for-salt';
+   var input=req.params.input;
+   var output=hash(input,salt);
+   res.send(output);
+});
+
 app.get("/create-user",function(req,res){
    var username=req.body.username;
    var password=req.body.password;
@@ -188,17 +201,7 @@ app.get("/:articleName/submitcomment/",function(req,res){
 });
 
 
-function hash(input,salt){
-    var output=crypto.pbkdf2Sync(input,salt , 100000, 512, 'sha512');
-    return output.toString('hex');
-}
 
-app.get("/hash/:input",function(req,res){
-    var salt='randomized-value-for-salt';
-   var input=req.params.input;
-   var output=hash(input,salt);
-   res.send(output);
-});
 
 
 
