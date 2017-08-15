@@ -5,8 +5,14 @@ var Pool=require('pg').Pool;
 var crypto=require('crypto');
 var bodyParser=require('body-parser');
 var app = express();
+var session=require('express-session');
+
 app.use(morgan('combined'));
 app.use(bodyParser.json());
+app.use(session({
+    secret:'safsdafsdahfd',
+    cookie:{maxAge:1000*60*60*24*30}
+}));
 
 var config={
     user:'karthikaraghavendrar7',
@@ -185,13 +191,22 @@ app.post("/login",function(req,res){
       else{
           storedPassword=result.rows[0].password;
           hpassword=hash(password,storedPassword.split('$')[2]);
-          if(storedPassword===hpassword) res.send("Login Successful");
+          if(storedPassword===hpassword){
+              req.session.auth={userId:result.rows[0].id};
+              
+              res.send("Login Successful");
+          } 
           else res.status(403).send("Login Failed");
           
       }
    });
 });
 
+
+app.get("/check-login",function(req,res){
+    if(req.session && req.session.auth && req.session.auth.userId) res.send("You are logged in as :"+req.session.auth.userId);
+    else res.send("You are not logged in");
+});
 
 /*app.get("/:articleName",function (req,res){
    var articleName=req.params.articleName;
