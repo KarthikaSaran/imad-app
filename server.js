@@ -208,6 +208,11 @@ app.get("/check-login",function(req,res){
     else res.send("You are not logged in");
 });
 
+
+app.get("/logout",function(req,res){
+   delete req.sesion.auth;
+   res.send("Logged Out");
+});
 /*app.get("/:articleName",function (req,res){
    var articleName=req.params.articleName;
    res.send(createTemplate(articles[articleName]));
