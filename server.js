@@ -210,7 +210,7 @@ app.get("/check-login",function(req,res){
 
 
 app.get("/logout",function(req,res){
-   delete req.sesion.auth;
+   delete req.session.auth;
    res.send("Logged Out");
 });
 /*app.get("/:articleName",function (req,res){
