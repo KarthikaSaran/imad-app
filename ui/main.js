@@ -47,6 +47,7 @@ button3.onclick=function(){
     var username=document.getElementById("username").value;
     document.getElementById("name").value='';
     var password=document.getElementById("password").value;
+    console.log(username,password);
     var request=new XMLHttpRequest();
     request.onreadystatechange=function() {
         if(request.readyState===XMLHttpRequest.DONE) {
