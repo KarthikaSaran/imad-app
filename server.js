@@ -69,7 +69,7 @@ var articles={
     
 };
 
-app.post("/create-user",function(req,res){
+app.get("/create-user",function(req,res){
    var username=req.body.username;
    var password=req.body.password;
    var salt=crypto.getRandomString(128).toString('hex');
@@ -80,7 +80,7 @@ app.post("/create-user",function(req,res){
    });
 });
 
-/*function createTemplate(data)
+function createTemplate(data)
 {
     var title=data.title;
     var place=data.place;
@@ -128,7 +128,7 @@ app.post("/create-user",function(req,res){
             </body>
         </html>`;
     return htmlTemplate;
-}*/
+}
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
@@ -161,7 +161,7 @@ app.get('/submitname/', function (req, res) {
 
 
 
-/*app.get("/:articleName",function (req,res){
+app.get("/:articleName",function (req,res){
    var articleName=req.params.articleName;
    res.send(createTemplate(articles[articleName]));
     
@@ -185,7 +185,7 @@ app.get("/:articleName/submitcomment/",function(req,res){
    res.send(JSON.stringify(comments));
     
     //res.send(JSON.stringify(comments));
-});*/
+});
 
 
 function hash(input,salt){
