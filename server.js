@@ -72,9 +72,10 @@ var articles={
 app.post("/create-user",function(req,res){
    var username=req.body.username;
    var password=req.body.password;
-   pool.query('INSERT INTO "user"(username,password) VALUES ($1, $2)',[username,password],function(err,response){
+   var salt=crypto.getRandomString(128).toString('hex');
+   var hpassword=hash(password,salt);
+   pool.query('INSERT INTO "user"(username,password) VALUES ($1, $2)',[username,hpassword],function(err,response){
       if(err) res.status(500).send(err.toString());
-      else if(result.rows.length===0) res.status(404).send("Not found");
       else res.send("User successfully created for"+username); 
    });
 });
@@ -187,14 +188,15 @@ app.get("/:articleName/submitcomment/",function(req,res){
 });
 
 
-function hash(input){
-    var output=crypto.pbkdf2Sync(input, 'randomized-value-for-salt', 100000, 512, 'sha512');
+function hash(input,salt){
+    var output=crypto.pbkdf2Sync(input,salt , 100000, 512, 'sha512');
     return output.toString('hex');
 }
 
 app.get("/hash/:input",function(req,res){
+    var salt='randomized-value-for-salt';
    var input=req.params.input;
-   var output=hash(input);
+   var output=hash(input,salt);
    res.send(output);
 });
 
