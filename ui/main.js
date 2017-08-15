@@ -53,7 +53,8 @@ button3.onclick=function(){
     request.onreadystatechange=function() {
         if(request.readyState===XMLHttpRequest.DONE) {
            if(request.status===200) alert("Login Successful");
-           else if(request.status===404) alert("Login Failed");
+           else if(request.status===403) alert("Login Failed");
+           else if(request.status===404) alert("User not available");
            else if(request.status===500) alert("Something went wrong");
         }
     
