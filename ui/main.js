@@ -47,6 +47,7 @@ button3.onclick=function(){
     var username=document.getElementById("username").value;
     document.getElementById("username").value='';
     var password=document.getElementById("password").value;
+    document.getElementById("password").value='';
     console.log(username,password);
     var request=new XMLHttpRequest();
     request.onreadystatechange=function() {
@@ -57,7 +58,7 @@ button3.onclick=function(){
         }
     
     };
-    request.open('POST','http://karthikaraghavendrar7.imad.hasura-app.io/submitname/login',true);
+    request.open('POST','http://karthikaraghavendrar7.imad.hasura-app.io/login',true);
     request.setRequestHeader('Content-type','application/json');
     request.send(JSON.stringify({username:username,password:password}));    
 };
