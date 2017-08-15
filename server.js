@@ -80,7 +80,7 @@ app.post("/create-user",function(req,res){
    });
 });
 
-function createTemplate(data)
+/*function createTemplate(data)
 {
     var title=data.title;
     var place=data.place;
@@ -128,7 +128,7 @@ function createTemplate(data)
             </body>
         </html>`;
     return htmlTemplate;
-}
+}*/
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
