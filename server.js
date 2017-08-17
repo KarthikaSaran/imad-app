@@ -196,7 +196,7 @@ app.post("/login",function(req,res){
           if(storedPassword===hpassword){
               req.session.auth={userId:result.rows[0].id};
               
-              res.send("Login Successful");
+              res.sendFile(path.join(__dirname, 'ui', 'welcome.html'));
           } 
           else res.status(403).send("Login Failed");
           
