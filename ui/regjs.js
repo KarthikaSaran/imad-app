@@ -1,12 +1,12 @@
 var button5 = document.getElementById("submitdb");
 button5.onclick = function(){
-    console.log("inside onclick function");
+   
   var name = document.getElementById("name").value;
   var age = document.getElementById("age").value;
   var password = document.getElementById("password").value;
   var confirmpassword = document.getElementById("confirmpassword").value;
-  console.log(name+password);
   if (password === confirmpassword) {
+       console.log("inside  if");
     var request=new XMLHttpRequest();
     request.onreadystatechange=function() {
         if(request.readyState===XMLHttpRequest.DONE) {
