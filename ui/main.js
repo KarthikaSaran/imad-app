@@ -78,6 +78,7 @@ request.send(null);
 
 var button5 = document.getElementById("submitdb");
 button5.onclick = function(){
+    console.log("inside onclick function");
   var name = document.getElementById("name").value;
   var age = document.getElementById("age").value;
   var password = document.getElementById("password").value;
