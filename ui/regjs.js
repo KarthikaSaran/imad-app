@@ -8,6 +8,7 @@ button5.onclick = function(){
   if (password === confirmpassword) {
       
     var request=new XMLHttpRequest();
+    console.log("after request");
     request.onreadystatechange=function() {
          console.log("inside  onreadystate");
         if(request.readyState===XMLHttpRequest.DONE) {
