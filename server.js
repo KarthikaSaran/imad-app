@@ -145,6 +145,10 @@ app.get('/registration',function(req,res){
    res.sendFile(path.join(__dirname, 'ui', 'registration.html')); 
 });
 
+app.get('/welcome',function(req,res){
+   res.sendFile(path.join(__dirname, 'ui', 'welcome.html')); 
+});
+
 var counter=0;
 app.get('/counter', function (req, res) {
   counter=counter+1;
