@@ -6,10 +6,12 @@ button5.onclick = function(){
   var password = document.getElementById("password").value;
   var confirmpassword = document.getElementById("confirmpassword").value;
   if (password === confirmpassword) {
-       console.log("inside  if");
+      
     var request=new XMLHttpRequest();
     request.onreadystatechange=function() {
+         console.log("inside  onreadystate");
         if(request.readyState===XMLHttpRequest.DONE) {
+            console.log("inside  XMLHttp done");
            if(request.status===200) alert("user created successfully");
         }
     request.open('POST','http://karthikaraghavendrar7.imad.hasura-app.io/create-user',true);
