@@ -3,7 +3,7 @@ body {
     background-color:lightgrey;
     margin-top: 60px;
     overflow:scroll;
-    margin-bottom: 60px;
+    padding-bottom: 60px;
 }
 
 .center {
