@@ -37,4 +37,5 @@ p {
 }
 div{
    background-color:white; 
+   overflow: scroll;
 }
