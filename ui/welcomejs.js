@@ -5,8 +5,10 @@ button.onclick = function(){
          
          if(request.readyState===XMLHttpRequest.DONE) {
             if(request.status===200) 
-                window.location.href='http://karthikaraghavendrar7.imad.hasura-app.io/logout';
+               alert("Logged out");
         }
      
   }; 
+ request.open('GET','http://karthikaraghavendrar7.imad.hasura-app.io/logout',true);
+ request.send(null);  
 };
