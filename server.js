@@ -142,7 +142,7 @@ app.get('/test-db',function(req,res) {
 
 
 app.get('/registration',function(req,res){
-   res.sendFile(path.join(__dirname, 'ui', 'index.html')); 
+   res.sendFile(path.join(__dirname, 'ui', 'registration.html')); 
 });
 
 var counter=0;
