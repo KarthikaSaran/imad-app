@@ -258,6 +258,10 @@ app.get('/ui/articlejs.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'articlejs.js'));
 });
 
+app.get('/ui/regjs.js', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'regjs.js'));
+});
+
 app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });
