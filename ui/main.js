@@ -52,7 +52,7 @@ button3.onclick=function(){
     var request=new XMLHttpRequest();
     request.onreadystatechange=function() {
         if(request.readyState===XMLHttpRequest.DONE) {
-           if(request.status===200) alert("Login Successful");
+           if(request.status===200) document.location.href='http://karthikaraghavendrar7.imad.hasura-app.io/welcome';
            else if(request.status===403) alert("Login Failed");
            else if(request.status===404) alert("User not available");
            else if(request.status===500) alert("Something went wrong");
