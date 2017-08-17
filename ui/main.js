@@ -67,7 +67,7 @@ button3.onclick=function(){
 var button4 = document.getElementById("signup");
 button4.onclick = function(){
 var request = new XMLHttpRequest();
-request.open('GET','http://karthikaraghavendrar7.imad.hasura-app.io/registration',true);
+request.open('POST','http://karthikaraghavendrar7.imad.hasura-app.io/registration',true);
 request.send(null);   
 };
 
