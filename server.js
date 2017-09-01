@@ -210,7 +210,12 @@ app.post("/login",function(req,res){
              // res.sendFile(path.join(__dirname, 'ui', 'welcome.html'));
              res.send(JSON.parse('{"message: CredentialCorrect}'));
           } 
-          else res.status(403).send("Login Failed");
+          else{
+              res.setHeader('Content-type','application/json');
+          
+          res.send(JSON.parse('{"message: Credential InCorrect}'));
+           //res.status(403).send("Login Failed");
+           }
           
       }
    });
