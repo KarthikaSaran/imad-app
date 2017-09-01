@@ -182,7 +182,9 @@ app.post("/create-user",function(req,res){
    var hpassword=hash(password,salt);
    pool.query('INSERT INTO "user"(username,password) VALUES ($1, $2)',[username,hpassword],function(err,response){
       if(err) res.status(500).send(err.toString());
-      else res.send("User successfully created for"+username); 
+      else{ 
+          res.setHeader('Content-type','application/json');
+          res.send("User successfully created for"+username); }
    });
 });
 
@@ -193,14 +195,20 @@ app.post("/login",function(req,res){
    
    pool.query('SELECT * FROM "user" where username= $1',[username],function(err,result){
       if(err) res.status(500).send(err.toString());
-      else if(result.rows[0].length===0) res.status(404).send("Not found");
+      else if(result.rows[0].length===0) {
+          res.setHeader('Content-type','application/json');
+          //res.status(404).send("Not found");
+          res.send(JSON.parse('{"message: Credential InCorrect}'));
+          
+      }
       else{
           storedPassword=result.rows[0].password;
           hpassword=hash(password,storedPassword.split('$')[2]);
           if(storedPassword===hpassword){
               req.session.auth={userId:result.rows[0].id};
-              
-              res.sendFile(path.join(__dirname, 'ui', 'welcome.html'));
+              res.setHeader('Content-type','application/json');
+             // res.sendFile(path.join(__dirname, 'ui', 'welcome.html'));
+             res.send(JSON.parse('{"message: CredentialCorrect}'));
           } 
           else res.status(403).send("Login Failed");
           
